@@ -15,6 +15,23 @@
         <div class="form-body">
             <div class="row">
                 <div class="col-md-4">
+                    <label for="first-name-horizontal">Select Gender</label>
+                </div>
+                <div class="col-md-8 form-group">
+                    <select name="gender" class="form-control" >
+                        <option value="">
+                            Sila Pilih Jantina
+                        </option>
+                        @foreach($genders as $key => $item)
+                            <option value="{{ $key }}">
+                                {{ $item }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
                     <label for="first-name-horizontal">Search keyword : </label>
                 </div>
                 <div class="col-md-8 form-group">
