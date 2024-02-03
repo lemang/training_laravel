@@ -15,8 +15,6 @@ class PelajarController extends Controller
 
         $citizenTypes = CustomHelper::lookupGeneral('type_citizen');
 
-//        dd($citizenTypes);
-
         $students = Student::with('lookupCitizen', 'lookupGender', 'levelStudent')
             ->filter($request)
             ->paginate(20);
