@@ -13,7 +13,9 @@ class PelajarController extends Controller
     {
         $genders = CustomHelper::lookupGeneral('gender');
 
-        $citizenTypes = CustomHelper::lookupGeneral('citizen_type');
+        $citizenTypes = CustomHelper::lookupGeneral('type_citizen');
+
+//        dd($citizenTypes);
 
         $students = Student::with('lookupCitizen', 'lookupGender', 'levelStudent')
             ->filter($request)

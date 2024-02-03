@@ -27,11 +27,14 @@ class Student extends Model
     public function scopeFilter($query, $filter)
     {
         if($filter->gender){
-            return $query->where('gender', $filter->gender);
+            $query->where('gender', $filter->gender);
         }
 
-        return '';
+        if($filter->citizen_type){
+            $query->where('citizen_type', $filter->citizen_type);
+        }
 
+        return $query;
     }
 
 }
