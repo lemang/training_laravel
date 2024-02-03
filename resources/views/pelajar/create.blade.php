@@ -7,12 +7,21 @@
         @csrf
         <div class="form-body">
             <div class="row">
+
                 <div class="col-md-4">
                     <label for="first-name-horizontal">Full Name</label>
                 </div>
                 <div class="col-md-8 form-group">
-                    <input type="text" id="first-name-horizontal" class="form-control" name="full_name" placeholder="First Name">
+                    <input type="text" id="first-name-horizontal" class="form-control" name="full_name" placeholder="Full Name">
                 </div>
+
+                <div class="col-md-4">
+                    <label for="first-name-horizontal">Matrik</label>
+                </div>
+                <div class="col-md-8 form-group">
+                    <input type="text" id="first-name-horizontal" class="form-control" name="matric_no" placeholder="Matrik">
+                </div>
+
                 <div class="col-md-4">
                     <label for="email-horizontal">Identity</label>
                 </div>

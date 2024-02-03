@@ -44,6 +44,15 @@ class PelajarController extends Controller
 
     public function store(Request $request)
     {
+
+        $request->validate([
+            'full_name' => 'required',
+            'identity' => 'required',
+            'citizen_type' => 'required',
+            'gender' => 'required',
+            'matrik_no' => 'required',
+        ]);
+
         Student::create($request->all());
 
         return redirect(route('pelajar.index'));
