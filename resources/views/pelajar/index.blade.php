@@ -3,6 +3,13 @@
 @section('title', 'Show Student')
 
 @section('content')
+
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="d-flex justify-content-end">
         <a href="{{ route('pelajar.create') }}" class="btn btn-primary">
             Create New Student

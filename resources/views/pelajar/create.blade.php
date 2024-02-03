@@ -13,7 +13,7 @@
                     <label for="first-name-horizontal">Full Name</label>
                 </div>
                 <div class="col-md-8 form-group">
-                    <input type="text" id="first-name-horizontal" class="form-control" name="full_name" placeholder="Full Name">
+                    <input value="{{ old('full_name') }}" type="text" id="first-name-horizontal" class="form-control" name="full_name" placeholder="Full Name">
                     @error('full_name')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -24,7 +24,7 @@
                     <label for="first-name-horizontal">Matrik</label>
                 </div>
                 <div class="col-md-8 form-group">
-                    <input type="text" id="first-name-horizontal" class="form-control" name="matric_no" placeholder="Matrik">
+                    <input value="{{ old('matric_no') }}" type="text" id="first-name-horizontal" class="form-control" name="matric_no" placeholder="Matrik">
                     @error('matric_no')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -35,7 +35,7 @@
                     <label for="email-horizontal">Identity</label>
                 </div>
                 <div class="col-md-8 form-group">
-                    <input type="text" id="email-horizontal" class="form-control" name="identity" placeholder="IC">
+                    <input value="{{ old('identity') }}" type="text" id="email-horizontal" class="form-control" name="identity" placeholder="IC">
                     @error('identity')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -51,7 +51,7 @@
                             Pilih Warganegara
                         </option>
                         @foreach($citizenTypes as $key => $item)
-                            <option value="{{ $key }}" >
+                            <option value="{{ $key }}" {{ old('citizen_type') == $key ? 'selected' : ''}}>
                                 {{ $item }}
                             </option>
                         @endforeach
@@ -71,7 +71,7 @@
                             Pilih Gender
                         </option>
                         @foreach($genders as $key => $item)
-                            <option value="{{ $key }}" >
+                            <option value="{{ $key }}" {{ old('gender') == $key ? 'selected' : ''}}>
                                 {{ $item }}
                             </option>
                         @endforeach

@@ -7,6 +7,7 @@ use App\Models\LevelStudent;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PelajarController extends Controller
 {
@@ -60,12 +61,28 @@ class PelajarController extends Controller
             ]
         );
 
-        $student = Student::create($validateData);
-        if($student){
-            $validateData['student_id'] = $student->id;
-            LevelStudent::create($validateData);
+        DB::beginTransaction();
+
+        try {
+
+            $student = Student::create($validateData);
+
+            if($student){
+                $validateData['student_id'] = $student->id;
+                LevelStudent::create($validateData);
+            }
+
+            DB::commit();
+
+            return redirect(route('pelajar.index'))->withSuccess('Pelajar Created');
+
+        } catch (\Throwable $th){
+
+            DB::rollBack();
+
+            return redirect()->back()->withErrors(['errors'])->withInput();
         }
 
-        return redirect(route('pelajar.index'));
+
     }
 }

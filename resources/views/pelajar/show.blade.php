@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Senarai Pelajar')
+@section('title', 'View Pelajar')
 
 @section('content')
     <div>
@@ -8,5 +8,9 @@
     </div>
     <div>
         IC : {{ $student->identity  }}
+    </div>
+
+    <div>
+        No. Matrik : {{ $student->levelStudent->matric_no  }}
     </div>
 @endsection
