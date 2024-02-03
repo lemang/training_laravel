@@ -35,13 +35,19 @@ class PelajarController extends Controller
 
     public function create()
     {
-        return view('pelajar.create');
+        $genders = CustomHelper::lookupGeneral('gender');
+
+        $citizenTypes = CustomHelper::lookupGeneral('type_citizen');
+
+        return view('pelajar.create', compact('genders', 'citizenTypes'));
     }
 
     public function store(Request $request)
     {
 
 //        dd($request);
+        Student::create($request->all());
+
 
         return redirect(route('pelajar.index'));
     }

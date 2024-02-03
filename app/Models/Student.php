@@ -9,6 +9,8 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['full_name', 'identity', 'gender', 'citizen_type'];
+
     public function levelStudent()
     {
         return $this->belongsTo(LevelStudent::class, 'id', 'student_id');
@@ -39,11 +41,14 @@ class Student extends Model
 
         # Search Matrik No
         if($filter->keyword){
-            $query->whereHas('levelStudent', function ($query) use ($filter){
-                $query->where('matric_no', 'like', "%{$filter->keyword}%");
-            })
-            ->orWhere('full_name', 'like', "%{$filter->keyword}%")
-            ->orWhere('identity', 'like', "%{$filter->keyword}%");
+            $query->where(function ($query) use ($filter){
+                $query->whereHas('levelStudent', function ($query) use ($filter){
+                    $query->where('matric_no', 'like', "%{$filter->keyword}%");
+                })
+                    ->orWhere('full_name', 'like', "%{$filter->keyword}%")
+                    ->orWhere('identity', 'like', "%{$filter->keyword}%");
+            });
+
         }
 //        $query->when($filter->matric_no ?? false, function ($query, $search){
 //           $query->whereHas('levelStudent', function ($query) use ($search){

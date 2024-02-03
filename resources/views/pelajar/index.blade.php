@@ -19,10 +19,10 @@
                 <div class="col-md-8 form-group">
                     <select name="citizen_type" class="form-control" >
                         <option value="">
-                            Warganegara
+                            Pilih Warganegara
                         </option>
                         @foreach($citizenTypes as $key => $item)
-                            <option value="{{ $key }}">
+                            <option {{ request('citizen_type') == $key ? 'selected' : ''}} value="{{ $key }}" >
                                 {{ $item }}
                             </option>
                         @endforeach
@@ -40,7 +40,7 @@
                             Sila Pilih Jantina
                         </option>
                         @foreach($genders as $key => $item)
-                            <option value="{{ $key }}">
+                            <option value="{{ $key }}" {{ request('gender') == $key ? 'selected' : ''}}>
                                 {{ $item }}
                             </option>
                         @endforeach
