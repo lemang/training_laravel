@@ -44,10 +44,7 @@ class PelajarController extends Controller
 
     public function store(Request $request)
     {
-
-//        dd($request);
         Student::create($request->all());
-
 
         return redirect(route('pelajar.index'));
     }

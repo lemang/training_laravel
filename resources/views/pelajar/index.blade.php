@@ -5,7 +5,7 @@
 @section('content')
     <div class="d-flex justify-content-end">
         <a href="{{ route('pelajar.create') }}" class="btn btn-primary">
-            Create
+            Create New Student
         </a>
     </div>
     <br>
@@ -56,7 +56,7 @@
                     <input value="{{ request('keyword') ?? '' }}" type="text" id="keyword-horizontal" class="form-control" name="keyword" placeholder="Searching">
                 </div>
                 <div class="col-sm-12 d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                    <button type="submit" class="btn btn-primary me-1 mb-1">Search</button>
                     <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
                 </div>
             </div>
