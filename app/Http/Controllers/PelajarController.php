@@ -15,16 +15,9 @@ class PelajarController extends Controller
 
         $citizenTypes = CustomHelper::lookupGeneral('citizen_type');
 
-        if($request->gender)
-        {
-//            dd($request->gender);
-            $students = Student::with('lookupCitizen', 'lookupGender', 'levelStudent')
-                ->where('gender', $request->gender)
-                ->paginate(20);
-        }else{
-            $students = Student::with('lookupCitizen', 'lookupGender', 'levelStudent')
-                ->paginate(20);
-        }
+        $students = Student::with('lookupCitizen', 'lookupGender', 'levelStudent')
+            ->filter($request)
+            ->paginate(20);
 
 
 //        $students = Student::with('lookupCitizen', 'lookupGender')->limit(100)->get();

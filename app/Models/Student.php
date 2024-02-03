@@ -24,4 +24,14 @@ class Student extends Model
         return $this->belongsTo(GeneralLookup::class, 'gender', 'code');
     }
 
+    public function scopeFilter($query, $filter)
+    {
+        if($filter->gender){
+            return $query->where('gender', $filter->gender);
+        }
+
+        return '';
+
+    }
+
 }
