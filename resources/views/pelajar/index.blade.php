@@ -10,8 +10,7 @@
     </div>
     <br>
 
-    <form class="form form-horizontal" action="{{ route('pelajar.store') }}" method="post">
-        @csrf
+    <form class="form form-horizontal" action="{{ route('pelajar.index') }}" method="get">
         <div class="form-body">
             <div class="row">
                 <div class="col-md-4">
@@ -31,12 +30,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <label for="first-name-horizontal">Search keyword : </label>
-                </div>
-                <div class="col-md-8 form-group">
-                    <input type="text" id="keyword-horizontal" class="form-control" name="keyword" placeholder="Searching">
-                </div>
+{{--                <div class="col-md-4">--}}
+{{--                    <label for="first-name-horizontal">Search keyword : </label>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-8 form-group">--}}
+{{--                    <input type="text" id="keyword-horizontal" class="form-control" name="keyword" placeholder="Searching">--}}
+{{--                </div>--}}
                 <div class="col-sm-12 d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
                     <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>

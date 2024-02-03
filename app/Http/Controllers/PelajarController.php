@@ -11,15 +11,15 @@ class PelajarController extends Controller
 {
     public function index(Request $request)
     {
-
         $genders = CustomHelper::lookupGeneral('gender');
 
         $citizenTypes = CustomHelper::lookupGeneral('citizen_type');
 
-        if($request->keyword)
+        if($request->gender)
         {
+//            dd($request->gender);
             $students = Student::with('lookupCitizen', 'lookupGender', 'levelStudent')
-                ->where()
+                ->where('gender', $request->gender)
                 ->paginate(20);
         }else{
             $students = Student::with('lookupCitizen', 'lookupGender', 'levelStudent')
@@ -48,7 +48,7 @@ class PelajarController extends Controller
     public function store(Request $request)
     {
 
-        dd($request);
+//        dd($request);
 
         return redirect(route('pelajar.index'));
     }
