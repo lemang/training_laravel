@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\CustomHelper;
+use App\Models\LevelStudent;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -45,15 +46,25 @@ class PelajarController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
+        $validateData = $request->validate(
+            [
             'full_name' => 'required',
             'identity' => 'required',
             'citizen_type' => 'required',
             'gender' => 'required',
-            'matrik_no' => 'required',
-        ]);
+            'matric_no' => 'required|min:8',
+            ],
+            [
+                'full_name.required' => 'Nama mestilah diiisi',
+                'citizen_type.required' => 'Wajib diisi'
+            ]
+        );
 
-        Student::create($request->all());
+        $student = Student::create($validateData);
+        if($student){
+            $validateData['student_id'] = $student->id;
+            LevelStudent::create($validateData);
+        }
 
         return redirect(route('pelajar.index'));
     }
