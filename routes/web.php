@@ -14,6 +14,21 @@ use App\Http\Controllers\PelajarController;
 |
 */
 
+Route::middleware(['auth'])->group(function (){
+
+    Route::get('/pelajar', [PelajarController::class, 'index'])
+        ->name('pelajar.index');
+
+    Route::get('/pelajar/create', [PelajarController::class, 'create'])
+        ->name('pelajar.create');
+
+    Route::post('/pelajar', [PelajarController::class, 'store'])
+        ->name('pelajar.store');
+
+    Route::get('/pelajar/{id}', [PelajarController::class, 'show'])
+        ->name('pelajar.show');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,17 +38,7 @@ Route::get('/training', function () {
     return view('welcome');
 });
 
-Route::get('/pelajar', [PelajarController::class, 'index'])
-    ->name('pelajar.index');
 
-Route::get('/pelajar/create', [PelajarController::class, 'create'])
-    ->name('pelajar.create');
-
-Route::post('/pelajar', [PelajarController::class, 'store'])
-    ->name('pelajar.store');
-
-Route::get('/pelajar/{id}', [PelajarController::class, 'show'])
-    ->name('pelajar.show');
 
 Route::resource('program', \App\Http\Controllers\ProgramController::class);
 
