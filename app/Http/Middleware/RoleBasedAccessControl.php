@@ -21,8 +21,6 @@ class RoleBasedAccessControl
     public function handle($request, Closure $next, ... $roles)
     {
 
-      
-        
         $rolecode = $request->user()->role ? $request->user()->role->code : '';
 
         if(!$rolecode){
@@ -37,9 +35,9 @@ class RoleBasedAccessControl
             session(['role' => $inroles->role_id]);
             $rolecode = $inroles->role->code;
 
-      
+
         }
-        if (!in_array($rolecode, $roles))    
+        if (!in_array($rolecode, $roles))
         {
             abort(403, 'Unauthorized action.');
         }

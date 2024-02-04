@@ -16,8 +16,12 @@ use App\Http\Controllers\PelajarController;
 
 Route::middleware(['auth'])->group(function (){
 
-    Route::get('/pelajar', [PelajarController::class, 'index'])
-        ->name('pelajar.index');
+    Route::middleware(['rbac:R001,R002'])->group(function (){
+
+        Route::get('/pelajar', [PelajarController::class, 'index'])
+            ->name('pelajar.index');
+
+    });
 
     Route::get('/pelajar/create', [PelajarController::class, 'create'])
         ->name('pelajar.create');
